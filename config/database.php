@@ -54,11 +54,18 @@ return [
             // 'password' => env('DB_PASSWORD', 'forge'),
             // 'unix_socket' => env('DB_SOCKET', '/Applications/MAMP/tmp/mysql/mysql.sock'),
 
-            'host' => env('DB_HOST', 'us-cdbr-iron-east-04.cleardb.net'),
+            // 'host' => env('DB_HOST', 'us-cdbr-iron-east-04.cleardb.net'),
+            // 'port' => env('DB_PORT', '3306'),
+            // 'database' => env('DB_DATABASE', 'heroku_3ddb73dfdaab16e'),
+            // 'username' => env('DB_USERNAME', 'beafdd06541972'),
+            // 'password' => env('DB_PASSWORD', 'dc468fba'),
+            // 'unix_socket' => env('DB_SOCKET', ''),
+
+            'host' => env('DB_HOST', 'db4free.net'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'heroku_3ddb73dfdaab16e'),
-            'username' => env('DB_USERNAME', 'beafdd06541972'),
-            'password' => env('DB_PASSWORD', 'dc468fba'),
+            'database' => env('DB_DATABASE', 'activelearning'),
+            'username' => env('DB_USERNAME', 'activelearning'),
+            'password' => env('DB_PASSWORD', 'activelearning'),
             'unix_socket' => env('DB_SOCKET', ''),
             
             'charset' => 'utf8mb4',

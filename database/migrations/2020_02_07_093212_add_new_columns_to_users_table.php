@@ -15,8 +15,8 @@ class AddNewColumnsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('last_name')->after('name')->nullable();
-            $table->string('username')->after('last_name')->unique();
-            $table->string('phone')->after('username')->nullable();
+            $table->string('user_name')->after('last_name')->nullable();
+            $table->string('phone')->after('user_name')->nullable();
         });
     }
 
@@ -29,7 +29,7 @@ class AddNewColumnsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('last_name');
-            $table->dropColumn('username');
+            $table->dropColumn('user_name');
             $table->dropColumn('phone');
         });
     }
