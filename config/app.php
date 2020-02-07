@@ -13,6 +13,7 @@ return [
     |
     */
 
+    
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
@@ -27,6 +28,7 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -53,6 +55,8 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+
+    'log' => 'errorlog',
 
     'asset_url' => env('ASSET_URL', null),
 
