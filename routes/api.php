@@ -27,9 +27,15 @@ Route::middleware('auth:api')->group(function () {
     Route::get('special_offer_books', 'BookController@special_offers');
     Route::get('show', 'UserController@show');
 
-    Route::group(['prefix' => 'admin', 'as' => 'admin'], function() {
+    Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'as' => 'admin'], function() {
         Route::get('allusers', 'AdminController@allusers');
         Route::get('user/{user_id}', 'AdminController@editUser');
+        Route::post('update/user/{user_id}', 'AdminController@updateUser');
         Route::get('user/delete/{id}', 'AdminController@deleteUser');
+
+        Route::post('create/book', 'AdminController@createBook');
+        Route::get('book/{book_id}', 'AdminController@editBook');
+        Route::post('update/book/{user_id}', 'AdminController@updateBook');
+        Route::get('delete/book/{id}', 'AdminController@deleteBook');
     });
 });

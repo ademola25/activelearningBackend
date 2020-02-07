@@ -13,13 +13,16 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        // DB::table('users')->insert([
-        //     'name' => 'user1',
-        //     'email' => 'user@activelearning.ro',
-        //     'password' => Hash::make('password'),
-        //     'created_at' => NOW(),
-        //     'updated_at' => NOW(),
-        // ]);
+        DB::table('users')->insert([
+            'name' => 'user1',
+            'email' => 'user@activelearning.ro',
+            'phone' => '0806067222',
+            'username' => 'users',
+            'last_name' => 'Seks',
+            'password' => Hash::make('password'),
+            'created_at' => NOW(),
+            'updated_at' => NOW(),
+        ]);
         
         $faker = Faker::create('App\User');
         

@@ -17,9 +17,9 @@ class CreateBooksTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('image_url');
-            $table->timestamp('published_date');
+            $table->date('published_date')->nullable;
             $table->boolean('purchased')->nullable();
-            $table->boolean('special_offer');
+            $table->boolean('special_offer')->nullable();
             $table->timestamps();
         });
     }

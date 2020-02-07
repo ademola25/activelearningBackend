@@ -69,13 +69,13 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = [
-            'email' => $request->email,
+            'username' => $request->username,
             'password' => $request->password
         ];
+        // dd($credentials);
  
         if (auth()->attempt($credentials)) {
             $token = auth()->user()->createToken('activelearning')->accessToken;
-            // dd(auth()->user());
             return response()->json(['token' => $token], 200);
         } else {
             return response()->json(['error' => 'UnAuthorised'], 401);
