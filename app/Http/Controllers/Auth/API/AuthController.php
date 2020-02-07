@@ -74,7 +74,7 @@ class AuthController extends Controller
         ];
  
         if (auth()->attempt($credentials)) {
-            $token = auth()->user()->createToken('activelearning')->accessToken;
+            // $token = auth()->user()->createToken('activelearning')->accessToken;
             dd(auth()->user());
             return response()->json(['token' => $token], 200);
         } else {
