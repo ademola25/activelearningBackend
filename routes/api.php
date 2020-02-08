@@ -18,8 +18,8 @@ use Illuminate\Http\Request;
 
 // });
 
-Route::post('login', 'Auth\API\AuthController@login')->middleware('cors');
-Route::post('register', 'Auth\API\AuthController@register')->middleware('cors');
+Route::post('login', 'Auth\API\AuthController@login');
+Route::post('register', 'Auth\API\AuthController@register');
 
 
 Route::middleware('auth:api')->group(function () {
