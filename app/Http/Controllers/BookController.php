@@ -15,7 +15,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::where('purchased', 0)->orderBy('published_date')->get();
+        $books = Book::where('purchased', 0)->where('special_offer', 0)->orderBy('published_date')->get();
 
         if ($books !== null) { 
             $response = [
@@ -41,7 +41,7 @@ class BookController extends Controller
      */
     public function special_offers()
     {
-        $special_books = Book::where('special_offer', 1)->orderBy('published_date')->get();
+        $special_books = Book::where('special_offer', 1)->where('purchased', 0)->orderBy('published_date')->get();
 
         if ($special_books !== null) { 
             $response = [
