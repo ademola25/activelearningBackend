@@ -18,16 +18,16 @@ use Illuminate\Http\Request;
 
 // });
 
-Route::post('login', 'Auth\API\AuthController@login');
-Route::post('register', 'Auth\API\AuthController@register');
+Route::post('login', 'Auth\API\AuthController@login')->middleware('cors');
+Route::post('register', 'Auth\API\AuthController@register')->middleware('cors');
 
 
-Route::middleware('auth:api')->group(function () {
+Route::middleware(['auth:api', 'cors'])->group(function () {
     Route::get('books', 'BookController@index');
     Route::get('special_offer_books', 'BookController@special_offers');
     Route::get('show', 'UserController@show');
 
-    Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'as' => 'admin'], function() {
+    Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'cors'], 'as' => 'admin'], function() {
         Route::get('allusers', 'AdminController@allusers');
         Route::get('user/{user_id}', 'AdminController@editUser');
         Route::post('update/user/{user_id}', 'AdminController@updateUser');
