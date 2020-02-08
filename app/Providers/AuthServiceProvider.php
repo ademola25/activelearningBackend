@@ -31,7 +31,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
         // Route::group([ 'middleware' => 'cors'], function() {
             Passport::routes();
-            Passport::personalAccessClientId('3');
+            Passport::personalAccessClientId('6');
             
         // });
     }
