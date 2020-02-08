@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-        Route::group([ ‘middleware’ => ‘cors’], function() {
+        Route::group([ 'middleware' => 'cors'], function() {
             Passport::routes();
             Passport::personalAccessClientId('3');
             
