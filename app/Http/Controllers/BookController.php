@@ -15,23 +15,37 @@ class BookController extends Controller
      */
     public function index()
     {
+        // get books that are not yet purchased
         $books = Book::where('purchased', 0)->where('special_offer', 0)->orderBy('published_date')->get();
 
-        if ($books !== null) { 
-            $response = [
-                'success' => true,
-                'message' => 'All available Books!!',
-                'data' => $books,
-            ];
-            return response()->json($response, 200);
-        } else {
+        try{
+            if ($books !== null) { 
+                $response = [
+                    'success' => true,
+                    'message' => 'All available Books!!',
+                    'data' => $books,
+                ];
+                return response()->json($response, 200);
+            } else {
+                return response()->json(
+                    [
+                        'success'=> false,
+                        'message' => 'No Book was found',
+                    ],
+                        200);
+                }
+        }
+        catch (\Exception $ex) {
             return response()->json(
                 [
                     'success'=> false,
-                    'message' => 'No Book was found',
+                    'error' => $ex->getMessage(),
+                    'message' => 'There was an error',
                 ],
-                     200);
-            }
+                 500);
+            
+            
+        }
     }
 
     /**
@@ -41,6 +55,7 @@ class BookController extends Controller
      */
     public function special_offers()
     {
+        // get special offer books
         $special_books = Book::where('special_offer', 1)->where('purchased', 0)->orderBy('published_date')->get();
 
         if ($special_books !== null) { 
