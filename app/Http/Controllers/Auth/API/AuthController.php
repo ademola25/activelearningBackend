@@ -40,23 +40,35 @@ class AuthController extends Controller
 
         $validator = Validator::make($input, $rules, $message);
 
-        if ($validator->fails()) {
-            return response()->json([
-                'error' => $validator->errors()
-            ], 422);
-        } else {
-            $user = new User([
-                'name' => $request->name,
-                'last_name' => $request->last_name,
-                'username' => $request->username,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'password' => Hash::make($request->password),
-            ]);
-            $user->save();
-            return response()->json([
-                'message' => 'Successfully created user!'
-            ], 201);
+        try{
+            if ($validator->fails()) {
+                return response()->json([
+                    'error' => $validator->errors()
+                ], 422);
+            } else {
+                $user = new User([
+                    'name' => $request->name,
+                    'last_name' => $request->last_name,
+                    'username' => $request->username,
+                    'email' => $request->email,
+                    'phone' => $request->phone,
+                    'password' => Hash::make($request->password),
+                ]);
+                $user->save();
+                return response()->json([
+                    'message' => 'Successfully created user!'
+                ], 201);
+            }
+        } catch (\Exception $ex) {
+            return response()->json(
+                [
+                    'success'=> false,
+                    'error' => $ex->getMessage(),
+                    'message' => 'There was an error',
+                ],
+                 500);
+            
+            
         }
     }
 
@@ -72,7 +84,7 @@ class AuthController extends Controller
             'username' => $request->username,
             'password' => $request->password
         ];
-        // dd($credentials);
+
         
         try{
             if (auth()->attempt($credentials)) {

@@ -38,4 +38,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Create a many to many relationship between the books and
+     * uers model so as to store a list of orers made by users
+     */
+    public function books()
+    {
+        return $this->belongsToMany('App\Book', 'book_user')->withTimestamps();
+    }
 }

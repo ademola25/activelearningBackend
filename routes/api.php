@@ -26,7 +26,12 @@ Route::middleware('auth:api')->group(function () {
     Route::get('books', 'BookController@index');
     Route::get('special_offer_books', 'BookController@special_offers');
     Route::get('show', 'UserController@show');
+    Route::post('buy_book', 'OrderController@buyUserBook');
+    Route::get('get_books', 'OrderController@getUserPurchasedBooks');
+    Route::get('del/purchased/book', 'OrderController@deleteUserPurchasedBook');
 
+
+    // only Admin can access this routes
     Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'as' => 'admin'], function() {
         Route::get('allusers', 'AdminController@allusers');
         Route::get('user/{user_id}', 'AdminController@editUser');
