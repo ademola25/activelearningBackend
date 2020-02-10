@@ -31,7 +31,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('del/purchased/book', 'OrderController@deleteUserPurchasedBook');
 
 
-    // only Admin can access this routes
+    // only Admin can access these routes
     Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'as' => 'admin'], function() {
         Route::get('allusers', 'AdminController@allusers');
         Route::get('user/{user_id}', 'AdminController@editUser');
